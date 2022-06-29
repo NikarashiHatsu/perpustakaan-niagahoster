@@ -1,33 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta5
+* @link https://tabler.io
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+</head>
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
+<body>
+    <div class="wrapper d-flex flex-column min-vh-100">
+        <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent" x-data>
+            <div class="container-fluid">
+                @include('layouts.header-mobile')
+
+                @include('layouts.sidebar')
+            </div>
+        </aside>
+
+        <div class="page-wrapper">
+            <div class="container-xl">
+                <div class="page-header d-print-none">
+                    <div class="row align-items-center">
+                        {{ $headerLeft }}
+
+                        {{ $headerRight}}
+                    </div>
                 </div>
-            </header>
+            </div>
 
-            <!-- Page Content -->
-            <main>
+            <div class="page-body">
                 {{ $slot }}
-            </main>
+            </div>
+
+            @include('layouts.footer')
         </div>
-    </body>
+    </div>
+
+    <script src="{{ asset('./dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('dist/js/tabler.min.js') }}"></script>
+</body>
+
 </html>
