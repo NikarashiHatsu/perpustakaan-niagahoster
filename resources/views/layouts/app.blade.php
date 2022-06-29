@@ -39,9 +39,9 @@
             <div class="container-xl">
                 <div class="page-header d-print-none">
                     <div class="row align-items-center">
-                        {{ $headerLeft }}
+                        {{ $headerLeft ?? "" }}
 
-                        {{ $headerRight}}
+                        {{ $headerRight ?? "" }}
                     </div>
                 </div>
             </div>
