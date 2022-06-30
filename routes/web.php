@@ -19,6 +19,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'au
     Route::view('/', 'dashboard.index')->name('index');
     Route::resources([
         'publisher' => \App\Http\Controllers\PublisherController::class,
+        'category' => \App\Http\Controllers\CategoryController::class,
     ], [
         'except' => ['show']
     ]);
