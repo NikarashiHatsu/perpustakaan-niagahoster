@@ -26,11 +26,16 @@ class BookDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', 'dashboard.book.action')
             ->addColumn('cover', function($model) {
-                $img = asset($model->cover);
+                $img = $model->cover_link;
 
                 return "
                     <a href='$img' target='_blank'>
-                        <img class='border' height='150' src='$img' />
+                        <img
+                            class='border object-cover'
+                            height='150'
+                            width='100'
+                            src='$img'
+                        />
                     </a>
                 ";
             })
