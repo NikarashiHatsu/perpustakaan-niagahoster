@@ -1,6 +1,6 @@
 <div class="collapse navbar-collapse" id="navbar-menu">
     <ul class="navbar-nav pt-lg-3">
-        <li class="nav-item">
+        <li @class(['nav-item', 'active' => request()->routeIs('dashboard.index')])>
             <a class="nav-link" href="{{ route('dashboard.index') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/home -->
@@ -16,7 +16,7 @@
                 </span>
             </a>
         </li>
-        <li class="nav-item">
+        <li @class(['nav-item', 'active' => request()->routeIs('dashboard.publisher.*')])>
             <a class="nav-link" href="{{ route('dashboard.publisher.index') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -49,7 +49,7 @@
                 </span>
             </a>
         </li>
-        <li class="nav-item">
+        <li @class(['nav-item', 'active' => request()->routeIs('dashboard.category.*')])>
             <a class="nav-link" href="{{ route('dashboard.category.index') }}">
                 <span class="nav-link-icon d-md-none d-lg-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/tag -->
