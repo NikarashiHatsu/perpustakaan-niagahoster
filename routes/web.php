@@ -17,6 +17,11 @@ Route::view('/', 'welcome')->name('index');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');
+    Route::resources([
+        'publisher' => \App\Http\Controllers\PublisherController::class,
+    ], [
+        'except' => ['show']
+    ]);
 });
 
 require __DIR__.'/auth.php';

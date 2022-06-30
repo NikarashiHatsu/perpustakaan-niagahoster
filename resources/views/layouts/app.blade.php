@@ -20,7 +20,7 @@
     <link href="{{ asset('dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('dist/css/demo.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
 
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
@@ -54,8 +54,12 @@
         </div>
     </div>
 
-    <script src="{{ asset('./dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('dist/js/tabler.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
+
+    {{ $scripts ?? "" }}
 </body>
 
 </html>

@@ -1,21 +1,22 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers;
 
-use {{ namespacedModel }};
-use {{ rootNamespace }}Http\Controllers\Controller;
-use {{ namespacedRequests }}
+use App\DataTables\PublisherDataTable;
+use App\Http\Requests\StorePublisherRequest;
+use App\Http\Requests\UpdatePublisherRequest;
+use App\Models\Publisher;
 
-class {{ class }} extends Controller
+class PublisherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PublisherDataTable $dataTable)
     {
-        return view('model.index');
+        return $dataTable->render('dashboard.publisher.index');
     }
 
     /**
@@ -25,19 +26,19 @@ class {{ class }} extends Controller
      */
     public function create()
     {
-        return view('model.create');
+        return view('dashboard.publisher.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \{{ namespacedStoreRequest }}  $request
+     * @param  \App\Http\Requests\StorePublisherRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store({{ storeRequest }} $request)
+    public function store(StorePublisherRequest $request)
     {
         try {
-            \{{ namespacedModel }}::create($request->validated());
+            \App\Models\Publisher::create($request->validated());
         } catch (\Throwable $th) {
             return back()->with('error', 'Failed to store data: ' . $th->getMessage());
         }
@@ -48,40 +49,40 @@ class {{ class }} extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    public function show({{ model }} ${{ modelVariable }})
+    public function show(Publisher $publisher)
     {
-        return view('model.view', [
-            'model' => ${{ modelVariable }},
+        return view('dashboard.publisher.view', [
+            'publisher' => $publisher,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    public function edit({{ model }} ${{ modelVariable }})
+    public function edit(Publisher $publisher)
     {
-        return view('model.edit', [
-            'model' => ${{ modelVariable }},
+        return view('dashboard.publisher.edit', [
+            'publisher' => $publisher,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \{{ namespacedUpdateRequest }}  $request
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \App\Http\Requests\UpdatePublisherRequest  $request
+     * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    public function update({{ updateRequest }} $request, {{ model }} ${{ modelVariable }})
+    public function update(UpdatePublisherRequest $request, Publisher $publisher)
     {
         try {
-            ${{ modelVariable }}->update($request->validated());
+            $publisher->update($request->validated());
         } catch (\Throwable $th) {
             return back()->with('error', 'Filed to update the data: ' . $th->getMessage());
         }
@@ -92,13 +93,13 @@ class {{ class }} extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @param  \App\Models\Publisher  $publisher
      * @return \Illuminate\Http\Response
      */
-    public function destroy({{ model }} ${{ modelVariable }})
+    public function destroy(Publisher $publisher)
     {
         try {
-            ${{ modelVariable }}->delete();
+            $publisher->delete();
         } catch (\Throwable $th) {
             return back()->with('error', 'Failed to delete the data: ' . $th->getMessage());
         }
