@@ -34,11 +34,17 @@ class BookDataTable extends DataTable
                     </a>
                 ";
             })
+            ->addColumn('category.name', function($model) {
+                return $model->category->name ?? "<i class='italic text-muted small'>(Deleted category)</i>";
+            })
+            ->addColumn('publisher.name', function($model) {
+                return $model->publisher->name ?? "<i class='italic text-muted small'>(Deleted publisher)</i>";
+            })
             ->addColumn('published_date', function($model) {
                 return Carbon::parse($model->published_date)->isoFormat('LLLL');
             })
             ->addIndexColumn()
-            ->rawColumns(['cover', 'action'])
+            ->rawColumns(['cover', 'category.name', 'publisher.name', 'action'])
             ->setRowId('id');
     }
 

@@ -35,6 +35,8 @@
     </x-slot>
 
     <div class="container-xl">
+        <x-alert />
+
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
