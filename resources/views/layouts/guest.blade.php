@@ -20,6 +20,7 @@
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ asset('static/logo-small-white.svg') }}" />
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 

@@ -15,13 +15,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <link href="{{ asset('dist/css/tabler.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-flags.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-payments.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/tabler-vendors.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
-
+    <link rel="shortcut icon" href="{{ asset('static/logo-small-white.svg') }}" />
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 
