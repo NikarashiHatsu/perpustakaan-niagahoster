@@ -88,7 +88,7 @@
                             <x-form-input
                                 label="Cover (unchanged)"
                                 field_name="Cover"
-                                :field_value="$book->cover"
+                                :field_value="$book->cover_link"
                                 type="file"
                             />
                         </div>
