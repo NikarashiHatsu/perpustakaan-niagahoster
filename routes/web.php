@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('index');
+Route::redirect('/', 'login')->name('index');
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => 'auth'], function() {
     Route::view('/', 'dashboard.index')->name('index');
