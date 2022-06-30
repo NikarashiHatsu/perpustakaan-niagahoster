@@ -1,9 +1,10 @@
 @props([
+    'label' => null,
     'field_name' => '',
     'field_value' => '',
 ])
 <div class="mb-3">
-    <label class="form-label">{{ $field_name }}</label>
+    <label class="form-label">{{ $label ?? $field_name }}</label>
     <textarea
         @class(['form-control', 'is-invalid' => $errors->has($field_name)])
         name="{{ strtolower($field_name) }}"

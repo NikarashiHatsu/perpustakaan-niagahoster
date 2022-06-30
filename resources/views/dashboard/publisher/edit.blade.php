@@ -63,12 +63,10 @@
                             />
                         </div>
                         <div class="col-12">
-                            <div class="mb-3">
-                                <x-form-textarea
-                                    field_name="Address"
-                                    :field_value="$publisher->address"
-                                />
-                            </div>
+                            <x-form-textarea
+                                field_name="Address"
+                                :field_value="$publisher->address"
+                            />
                         </div>
                     </div>
                     <button class="btn btn-success">

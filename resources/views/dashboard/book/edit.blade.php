@@ -2,7 +2,7 @@
     <x-slot name="headerLeft">
         <div class="col">
             <div class="btn-list">
-                <a href="{{ route('dashboard.publisher.index') }}" class="btn btn-primary d-none d-sm-inline-block">
+                <a href="{{ route('dashboard.book.index') }}" class="btn btn-primary d-none d-sm-inline-block">
                     <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -27,10 +27,10 @@
     <x-slot name="headerRight">
         <div class="col-auto ms-auto d-print-none d-flex flex-column align-items-end">
             <div class="page-pretitle">
-                Add a New Publisher
+                Edit Book
             </div>
             <h2 class="page-title">
-                Publisher
+                Book
             </h2>
         </div>
     </x-slot>
@@ -41,30 +41,55 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">
-                    Add a New Publisher
+                    Edit Book
                 </h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('dashboard.publisher.store') }}" method="post">
+                <form action="{{ route('dashboard.book.update', $book) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <x-form-input
-                                field_name="Name"
-                                field_value="{{ old('name') }}"
+                                field_name="Title"
+                                :field_value="$book->title"
                             />
                         </div>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                             <x-form-input
-                                data-mask="+00 000 0000 0000"
-                                field_name="Phone"
-                                field_value="{{ old('phone') }}"
+                                field_name="Published Date"
+                                :field_value="$book->published_date"
+                                type="date"
                             />
                         </div>
-                        <div class="col-12">
-                            <x-form-textarea
-                                field_name="Address"
-                                field_value="{{ old('address') }}"
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <x-form-select
+                                label="Publisher"
+                                field_name="publisher_id"
+                                type="date"
+                            >
+                                @foreach ($publishers as $id => $name)
+                                    <option {{ $id === $book->publisher_id ? 'selected' : '' }} value="{{ $id }}">{{ $name }}</option>
+                                @endforeach
+                            </x-form-select>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <x-form-select
+                                label="Category"
+                                field_name="category_id"
+                                type="date"
+                            >
+                                @foreach ($categories as $id => $name)
+                                    <option {{ $id === $book->category_id ? 'selected' : '' }} value="{{ $id }}">{{ $name }}</option>
+                                @endforeach
+                            </x-form-select>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <x-form-input
+                                label="Cover (unchanged)"
+                                field_name="Cover"
+                                :field_value="$book->cover"
+                                type="file"
                             />
                         </div>
                     </div>
@@ -76,7 +101,7 @@
                             <polyline points="14 4 14 8 8 8 8 4"></polyline>
                         </svg>
                         <span>
-                            Save
+                            Update
                         </span>
                     </button>
                 </form>

@@ -13,12 +13,12 @@ class Category extends Model
     public static function boot() {
         parent::boot();
 
-        self::creating(function ($publisher) {
-            $publisher->slug = str()->slug($publisher->name);
+        self::creating(function ($category) {
+            $category->slug = str()->slug($category->name);
         });
 
-        self::updating(function ($publisher) {
-            $publisher->slug = str()->slug($publisher->name);
+        self::updating(function ($category) {
+            $category->slug = str()->slug($category->name);
         });
     }
 
